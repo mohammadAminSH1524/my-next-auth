@@ -5,6 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt"
 import User from "@/app/models/User";
 import {toast} from "react-toastify"
+import connect from "@/app/utils/db";
 
 export const options = {
   providers: [GoogleProvider({
@@ -56,6 +57,7 @@ export const options = {
         },
       },
       async authorize(credentials) {
+        await connect();
         try {
           const foundUser = await User.findOne({ email: credentials.email })
             .lean()

@@ -1,4 +1,5 @@
 import User from "@/app/models/User";
+import connect from "@/app/utils/db";
 import bcrypt from "bcrypt";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -9,6 +10,7 @@ interface UserDataType {
 }
 export async function POST(req: NextRequest) {
   try {
+    await connect();
     const body = await req.json();
     const userData = body.values;
     console.log("userData", userData);
@@ -37,6 +39,7 @@ export async function POST(req: NextRequest) {
     await User.create(userData);
 
     return NextResponse.json({ message: "User Created." }, { status: 201 });
+
   } catch (error) {
     return NextResponse.json({ message: "Error", error }, { status: 500 });
   }
