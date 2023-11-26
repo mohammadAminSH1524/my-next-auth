@@ -10,7 +10,7 @@ import connect from "@/app/utils/db";
 export const options = {
   providers: [GoogleProvider({
       profile(profile) {
-        console.log("Profile Google: ", profile);
+        // console.log("Profile Google: ", profile);
 
         let userRole = "Google User";
         return {
@@ -24,7 +24,7 @@ export const options = {
     }),
     GitHubProvider({
       profile(profile) {
-        console.log("github profile : ", profile);
+        // console.log("github profile : ", profile);
 
         let userRole = "GitHub User";
         if (profile?.email == "harrywill1524@mailfa.com") {
@@ -57,7 +57,7 @@ export const options = {
         },
       },
       async authorize(credentials) {
-        await connect();
+        await connect()
         try {
           const foundUser = await User.findOne({ email: credentials.email })
             .lean()
@@ -65,14 +65,14 @@ export const options = {
 
           if (foundUser) {
             console.log("User Exists");
-            toast.error("some thing")
+           
             const match = await bcrypt.compare(
               credentials.password,
               foundUser.password
             );
 
             if (match) {
-              console.log("Good Pass");
+              console.log("password matched");
               delete foundUser.password;
 
               foundUser["role"] = "Unverified Email";

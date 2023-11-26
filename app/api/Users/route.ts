@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     await connect();
     const body = await req.json();
     const userData = body.values;
-    console.log("userData", userData);
+    // console.log("userData", userData);
 
     //Confirm data exists
     //  ?this code does not required because of formik form validation
@@ -39,7 +39,6 @@ export async function POST(req: NextRequest) {
     await User.create(userData);
 
     return NextResponse.json({ message: "User Created." }, { status: 201 });
-
   } catch (error) {
     return NextResponse.json({ message: "Error", error }, { status: 500 });
   }

@@ -11,10 +11,10 @@ const newUserSchema = Yup.object().shape({
   email: Yup.string().email("invalid email").required("email is required"),
   password: Yup.string()
     .required("Please Enter your password")
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-      "Must be strong password"
-    ),
+    // .matches(
+    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+    //   "Must be strong password"
+    // ),
 });
 
 const initialValues = {

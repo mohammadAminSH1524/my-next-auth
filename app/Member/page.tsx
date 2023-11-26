@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 
 export default async function Member() {
   const session = await getServerSession(options);
-  console.log("session : ", session);
+  // console.log("session : ", session);
 
   if (!session) {
     redirect("api/auth/signin?callbackUrl=/Member");
