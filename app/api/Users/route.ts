@@ -8,6 +8,19 @@ interface UserDataType {
   email: string;
   password: string;
 }
+
+export async function GET() {
+  try {
+    await connect();
+
+    const users = await User.find();
+// console.log("users : ",users);
+    return new NextResponse(JSON.stringify(users), { status: 200 });
+  } catch (err) {
+    return new NextResponse("Database Error", { status: 500 });
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     await connect();

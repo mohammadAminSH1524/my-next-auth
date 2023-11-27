@@ -11,6 +11,7 @@ export default async function Header() {
         <div>My Site</div>
         <div className="flex gap-10">
           <Link href="/">Home</Link>
+          <Link href="/test">Test</Link>
           <Link href="/CreateUser">Create User</Link>
           <Link href="/ClientMember">Client Member</Link>
           <Link href="/Member">Member</Link>

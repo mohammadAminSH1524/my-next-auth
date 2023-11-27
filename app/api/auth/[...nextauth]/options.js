@@ -64,7 +64,7 @@ export const options = {
             .exec();
 
           if (foundUser) {
-            console.log("User Exists");
+            // console.log("User Exists");
            
             const match = await bcrypt.compare(
               credentials.password,
@@ -72,7 +72,7 @@ export const options = {
             );
 
             if (match) {
-              console.log("password matched");
+              // console.log("password matched");
               delete foundUser.password;
 
               foundUser["role"] = "Unverified Email";
@@ -80,7 +80,7 @@ export const options = {
             }
           }
         } catch (error) {
-          console.log(error);
+          // console.log(error);
         }
         return null;
       },
