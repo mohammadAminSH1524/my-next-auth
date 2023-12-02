@@ -7,9 +7,9 @@ import Image from "next/image";
 
 export default function Test() {
   return (
-    <div className="flex justify-between gap-x-10">
-      <PostsList />
+    <div className="flex flex-col justify-between gap-10">
       <AddPostForm />
+      <PostsList />
     </div>
   );
 }
