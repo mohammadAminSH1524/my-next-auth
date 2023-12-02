@@ -2,11 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  h1 {
-    @apply font-bold text-3xl;
-  }
-  a {
-    @apply underline font-bold;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+

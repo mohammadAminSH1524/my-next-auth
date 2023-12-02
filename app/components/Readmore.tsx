@@ -17,7 +17,7 @@ export default function Readmore() {
       </button>
       {/* extra text */}
       {showFAQ && (
-        <div className="text-justify rtl:mr-3">
+        <div style={{direction:"rtl"}} className="text-justify ">
           وارد سایت دیجی‌کالا شوید. روی گزینه سفارش‌های من کلیک کنید. در این
           قسمت با کلیک روی جزییات می‌توانید سفارش خود را ببینید. می‌توانید در
           این قسمت روند آماده‌سازی و مراحل ارسال سفارش خود را پیگیری کنید.
