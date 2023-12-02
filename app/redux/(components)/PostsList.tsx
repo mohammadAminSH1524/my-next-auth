@@ -4,12 +4,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectAllPosts } from "../features/posts/postsSlice";
 import { sellectAllUsers } from "../features/users/usersSlice";
 import TimeAgo from "./TimeAgo";
+import ReactionButtons from "./ReactionButtons";
 
 export default function PostsList() {
   const posts = useSelector(selectAllPosts);
   const users = useSelector(sellectAllUsers);
 
-  const orderedPosts = posts.slice().sort((a,b)=>b.date.localeCompare(a.date))
+  const orderedPosts = posts
+    .slice()
+    .sort((a, b) => b.date.localeCompare(a.date));
 
   const authorStatus = (userId: string) => {
     const author = users.find((user) => user.id === userId);
@@ -17,12 +20,12 @@ export default function PostsList() {
   };
 
   return (
-    <section className="flex flex-col gap-4" >
+    <section className="flex flex-col gap-4">
       <h2>posts</h2>
       <div className="grid grid-cols-2 gap-x-6 gap-y-3">
         {orderedPosts.map((post) => (
           <article
-            className="flex flex-col px-8 py-4 gap-1 border-2 border-gray-400 rounded-lg"
+            className="flex flex-col px-8 py-4 gap-4 border-2 border-gray-400 rounded-lg"
             key={post.id}
           >
             <h2>
@@ -46,7 +49,13 @@ export default function PostsList() {
                   {authorStatus(post.userId)}
                 </span>
               </div>
-              <div>{<TimeAgo timestamp={post.date} />}</div>
+              <div className="text-blue-700">
+                {<TimeAgo timestamp={post.date} />}
+              </div>
+            </div>
+
+            <div>
+              <ReactionButtons post={post} />
             </div>
           </article>
         ))}
